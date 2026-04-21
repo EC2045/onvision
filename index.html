@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onvision | 音場（onva）公式放送局</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --onva-emerald: #50C878;
+            --onva-bg: #f8fafc;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--onva-bg);
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #50C878 0%, #3a965a 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .video-container {
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(80, 200, 120, 0.25);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .news-badge {
+            background: var(--onva-emerald);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--onva-emerald);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            box-shadow: 0 0 8px var(--onva-emerald);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center glass-card border-b">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 emerald-gradient rounded-lg flex items-center justify-center text-white font-bold">V</div>
+            <span class="text-xl font-bold tracking-tighter mono">onvision</span>
+        </div>
+        <div class="flex gap-8 text-sm font-medium">
+            <a href="#" class="hover:text-emerald-600 transition-colors">ARCHIVE</a>
+            <a href="#" class="hover:text-emerald-600 transition-colors">USSO REPORT</a>
+            <a href="#" class="hover:text-emerald-600 transition-colors">NODE LAB</a>
+        </div>
+        <div class="hidden md:block text-xs mono text-gray-500">
+            TIME: <span id="current-time">2045.04.18 31:72</span>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 px-6 max-w-6xl mx-auto">
+        <!-- Hero Section -->
+        <section class="mb-16">
+            <div class="text-center mb-10">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">音場の現在を、世界へ。</h1>
+                <p class="text-gray-500 max-w-2xl mx-auto">音ビジョンは、音場（onva）の現状を世界、そして未来へ伝えるための公認放送プログラムです。解説：シュレン</p>
+            </div>
+
+            <div class="video-container bg-black aspect-video max-w-4xl mx-auto mb-12 border-4 border-white">
+                <video id="main-video" controls class="w-full h-full object-cover">
+                    <source src="./onvision4-22.mp4" type="video/mp4">
+                    ご使用のブラウザはビデオタグをサポートしていません。
+                </video>
+            </div>
+        </section>
+
+        <!-- Video Summary Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- News Column 1: Incidents -->
+            <div class="glass-card p-8 rounded-3xl shadow-sm border border-emerald-100">
+                <div class="news-badge mb-4 uppercase">Incident Report</div>
+                <h3 class="text-xl font-bold mb-4">不適切な個人的演算による拘束</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    本日未明、音場の20代男性がノードラボ第3演算エネルギー濃度へ不正アクセス。
+                    標準言語プロトコルの監視を逃れ、未承認の「幸福な個人的演算」を3600秒間実行しました。
+                    この影響で周辺ブロックの演算精度に<span class="text-red-500 font-bold">0.02%</span>の遅延が発生しました。
+                </p>
+                <div class="mt-6 pt-6 border-t border-gray-100 flex items-center justify-between">
+                    <span class="text-xs text-gray-400 mono">SOURCE: USSO INVESTIGATION</span>
+                    <span class="text-xs font-bold text-emerald-600">RESOLVED</span>
+                </div>
+            </div>
+
+            <!-- News Column 2: Symbols -->
+            <div class="glass-card p-8 rounded-3xl shadow-sm border border-emerald-100">
+                <div class="news-badge mb-4 uppercase">Weekly Symbol</div>
+                <h3 class="text-xl font-bold mb-4">今週の推薦記号: 「!A」</h3>
+                <div class="flex items-center gap-6 mb-4">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-5xl font-light text-emerald-600 border border-emerald-200 shadow-inner">!A</div>
+                    <div class="text-xs text-gray-500">
+                        <p>Design by: Artist R</p>
+                        <p>Type: Universal Vowel</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    文字のない時代にデザインされた、最もシンプルで根源的な記号です。
+                    調和は正しい記号の選択から生まれます。
+                </p>
+            </div>
+
+            <!-- News Column 3: Forecast -->
+            <div class="glass-card p-8 rounded-3xl shadow-sm border border-emerald-100">
+                <div class="news-badge mb-4 uppercase">Atmosphere & Logic</div>
+                <h3 class="text-xl font-bold mb-4">明日の環境予測</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm">演算精度安定度</span>
+                        <span class="text-sm mono font-bold">99.8%</span>
+                    </div>
+                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                        <div class="bg-emerald-500 h-full w-[99.8%]"></div>
+                    </div>
+                    <div class="bg-emerald-100 p-4 rounded-xl mt-4">
+                        <p class="text-xs font-bold text-emerald-800 mb-1">空の色: 固定エメラルド</p>
+                        <p class="text-[10px] text-emerald-700">ノードラボの配熱処理サイクルにより終日固定されます。違和感がある場合は彩度調整Lv.4を推奨。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Footer -->
+        <footer class="mt-24 border-t pt-12 pb-8 text-center text-gray-400">
+            <div class="flex justify-center items-center gap-4 mb-6">
+                <span class="text-xs mono"><span class="status-dot"></span>SYSTEM STATUS: HARMONIZED</span>
+                <span class="text-xs mono">|</span>
+                <span class="text-xs mono">PROTOCOL: !ANBYAM OPTIMIZED</span>
+            </div>
+            <p class="text-[10px] tracking-widest uppercase">© 2045 onvision Broadcasting Network / Node Lab / USSO All Rights Reserved.</p>
+        </footer>
+    </main>
+
+    <script>
+        // Update Time with 31:72 format style logic
+        function updateTime() {
+            const timeElement = document.getElementById('current-time');
+            // This is a fixed display based on video, but let's add a ticking effect for "future feel"
+            const now = new Date();
+            const h = 31; 
+            const m = 72 + (now.getSeconds() % 10); // Simulation of non-standard time
+            timeElement.textContent = `2045.04.18 ${h}:${m}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Smooth video reveal
+        window.onload = () => {
+            const video = document.getElementById('main-video');
+            video.style.opacity = '1';
+        };
+    </script>
+</body>
+</html>
