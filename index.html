@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>onvision | ONVA公式放送局</title>
+    <meta name="description" content="onvision — ONVA王国が運営する公式放送局。映像・音声・アーカイブを通じてonva文化を世界へ発信。" />
+    <meta property="og:title" content="onvision | ONVA公式放送局" />
+    <meta property="og:description" content="onvision — ONVA王国が運営する公式放送局。映像・音声・アーカイブを通じてonva文化を世界へ発信。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ec2045.github.io/onvision/" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://rits1019c1.github.io/onva/byam.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --onva-emerald: #50C878;
             --onva-bg: #f8fafc;
         }
+
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--onva-bg);
             color: #1e293b;
             overflow-x: hidden;
         }
-        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
         .emerald-gradient {
             background: linear-gradient(135deg, #50C878 0%, #3a965a 100%);
         }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
+
         .video-container {
             position: relative;
             box-shadow: 0 25px 50px -12px rgba(80, 200, 120, 0.25);
             border-radius: 24px;
             overflow: hidden;
         }
+
         .news-badge {
             background: var(--onva-emerald);
             color: white;
@@ -41,6 +57,7 @@
             font-size: 0.75rem;
             font-weight: bold;
         }
+
         .status-dot {
             height: 8px;
             width: 8px;
@@ -51,19 +68,30 @@
             box-shadow: 0 0 8px var(--onva-emerald);
             animation: pulse 2s infinite;
         }
+
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center glass-card border-b">
         <div class="flex items-center gap-2">
-            <div class="w-8 h-8 emerald-gradient rounded-lg flex items-center justify-center text-white font-bold">V</div>
+            <div class="w-8 h-8 emerald-gradient rounded-lg flex items-center justify-center text-white font-bold">V
+            </div>
             <span class="text-xl font-bold tracking-tighter mono">onvision</span>
         </div>
         <div class="flex gap-8 text-sm font-medium">
@@ -114,7 +142,9 @@
                 <div class="news-badge mb-4 uppercase">Weekly Symbol</div>
                 <h3 class="text-xl font-bold mb-4">今週の推薦記号: 「<span class="onva" style="display: inline;">!a</span>」</h3>
                 <div class="flex items-center gap-6 mb-4">
-                    <div class="onva w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-5xl font-light text-emerald-600 border border-emerald-200 shadow-inner">!A</div>
+                    <div
+                        class="onva w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-5xl font-light text-emerald-600 border border-emerald-200 shadow-inner">
+                        !A</div>
                     <div class="text-xs text-gray-500">
                         <p>Design by: Artist R</p>
                         <p>Type: Universal Vowel</p>
@@ -153,7 +183,8 @@
                 <span class="text-xs mono">|</span>
                 <span class="text-xs mono">PROTOCOL: <span class="onva">!anbya</span> OPTIMIZED</span>
             </div>
-            <p class="text-[10px] tracking-widest uppercase">© 2045 onvision Broadcasting Network / Node Lab / USSO All Rights Reserved.</p>
+            <p class="text-[10px] tracking-widest uppercase">© 2045 onvision Broadcasting Network / Node Lab / USSO All
+                Rights Reserved.</p>
         </footer>
     </main>
 
@@ -163,7 +194,7 @@
             const timeElement = document.getElementById('current-time');
             // This is a fixed display based on video, but let's add a ticking effect for "future feel"
             const now = new Date();
-            const h = 31; 
+            const h = 31;
             const m = 72 + (now.getSeconds() % 10); // Simulation of non-standard time
             timeElement.textContent = `2045.04.18 ${h}:${m}`;
         }
@@ -177,4 +208,5 @@
         };
     </script>
 </body>
+
 </html>
