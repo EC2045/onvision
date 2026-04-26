@@ -82,6 +82,40 @@
                 opacity: 1;
             }
         }
+
+        .archive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .archive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px rgba(80, 200, 120, 0.3);
+        }
+
+        .archive-card.active {
+            border-color: var(--onva-emerald);
+            background: rgba(80, 200, 120, 0.05);
+        }
+
+        /* Sky Glitch Effect */
+        .sky-glitch {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+            background: linear-gradient(180deg, #50C878 0%, #f8fafc 100%);
+            animation: sky-shift 10s infinite alternate linear;
+        }
+
+        @keyframes sky-shift {
+            0% { filter: hue-rotate(0deg); opacity: 0.05; }
+            50% { filter: hue-rotate(15deg); opacity: 0.08; }
+            100% { filter: hue-rotate(-10deg); opacity: 0.05; }
+        }
     </style>
 </head>
 
@@ -99,9 +133,11 @@
             <a href="https://ec2045.github.io/onva_culture" class="hover:text-emerald-600 transition-colors">CULTURE</a>
         </div>
         <div class="hidden md:block text-xs mono text-gray-500">
-            TIME: <span id="current-time">2045.04.18 31:72</span>
+            TIME: <span id="current-time">2046.04.26 31:92</span>
         </div>
     </nav>
+
+    <div class="sky-glitch"></div>
 
     <main class="pt-24 pb-12 px-6 max-w-6xl mx-auto">
         <!-- Hero Section -->
@@ -113,63 +149,116 @@
 
             <div class="video-container bg-black aspect-video max-w-4xl mx-auto mb-12 border-4 border-white">
                 <video id="main-video" controls class="w-full h-full object-cover">
-                    <source src="./onvision4-22.mp4" type="video/mp4">
+                    <source id="video-source" src="./onvision4-26.mp4" type="video/mp4">
                     ご使用のブラウザはビデオタグをサポートしていません。
                 </video>
             </div>
         </section>
 
+        <!-- Video Archive Section -->
+        <section class="mb-16">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold tracking-tight">放送アーカイブ</h2>
+                    <p class="text-xs text-gray-400 mono">BROADCAST ARCHIVES</p>
+                </div>
+                <div class="h-[1px] flex-grow mx-6 bg-gray-200"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Archive Item 4-26 -->
+                <div class="archive-card glass-card p-4 rounded-2xl cursor-pointer group active" data-video="./onvision4-26.mp4">
+                    <div class="aspect-video bg-black rounded-xl mb-4 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-emerald-600/10 group-hover:bg-emerald-600/0 transition-colors"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div class="w-12 h-12 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-emerald-600 shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
+                                <svg class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <video class="w-full h-full object-cover pointer-events-none">
+                            <source src="./onvision4-26.mp4#t=1" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">onvision 4-26</h4>
+                            <p class="text-[10px] text-gray-400 mono">DATE: 2046.04.26</p>
+                        </div>
+                        <span class="news-badge text-[9px]">LATEST</span>
+                    </div>
+                </div>
+
+                <!-- Archive Item 4-22 -->
+                <div class="archive-card glass-card p-4 rounded-2xl cursor-pointer group" data-video="./onvision4-22.mp4">
+                    <div class="aspect-video bg-black rounded-xl mb-4 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-emerald-600/10 group-hover:bg-emerald-600/0 transition-colors"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div class="w-12 h-12 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-emerald-600 shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
+                                <svg class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <video class="w-full h-full object-cover pointer-events-none">
+                            <source src="./onvision4-22.mp4#t=1" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">onvision 4-22</h4>
+                            <p class="text-[10px] text-gray-400 mono">DATE: 2046.04.22</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Video Summary Grid -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- News Column 1: Incidents -->
+            <!-- News Column 1: Incident -->
             <div class="glass-card p-8 rounded-3xl shadow-sm border border-emerald-100">
                 <div class="news-badge mb-4 uppercase">Incident Report</div>
-                <h3 class="text-xl font-bold mb-4">不適切な個人的演算による拘束</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">
-                    本日未明、音場の20代男性がノードラボ第3演算エネルギー濃度へ不正アクセス。
-                    標準言語プロトコルの監視を逃れ、未承認の「幸福な個人的演算」を3600秒間実行しました。
-                    この影響で周辺ブロックの演算精度に<span class="text-red-500 font-bold">0.02%</span>の遅延が発生しました。
+                <h3 id="news-title" class="text-xl font-bold mb-4">象徴アール氏のネットワーク切断</h3>
+                <p id="news-body" class="text-sm text-gray-600 leading-relaxed">
+                    アーティストアール氏が公式ネットワークから切断されました。氏のアトリエからは標準プロトコル外の「禁止された色彩」が発見され、現在は公共アーカイブ内のデータへと移行されています。解析が進められています。
                 </p>
                 <div class="mt-6 pt-6 border-t border-gray-100 flex items-center justify-between">
-                    <span class="text-xs text-gray-400 mono">SOURCE: USSO INVESTIGATION</span>
-                    <span class="text-xs font-bold text-emerald-600">RESOLVED</span>
+                    <span id="news-source" class="text-xs text-gray-400 mono">SOURCE: WAC REPORT</span>
+                    <span id="news-status" class="text-xs font-bold text-red-600">ARCHIVED</span>
                 </div>
             </div>
 
             <!-- News Column 2: Symbols -->
             <div class="glass-card p-8 rounded-3xl shadow-sm border border-emerald-100">
                 <div class="news-badge mb-4 uppercase">Weekly Symbol</div>
-                <h3 class="text-xl font-bold mb-4">今週の推薦記号: 「<span class="onva" style="display: inline;">!a</span>」</h3>
+                <h3 id="symbol-header" class="text-xl font-bold mb-4">今週の推薦記号: 「<span id="symbol-char-small" class="mono" style="display: inline;">‽</span>」</h3>
                 <div class="flex items-center gap-6 mb-4">
-                    <div
-                        class="onva w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-5xl font-light text-emerald-600 border border-emerald-200 shadow-inner">
-                        !A</div>
+                    <div id="symbol-char"
+                        class="mono w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-5xl font-light text-emerald-600 border border-emerald-200 shadow-inner">
+                        ‽</div>
                     <div class="text-xs text-gray-500">
-                        <p>Design by: Artist R</p>
-                        <p>Type: Universal Vowel</p>
+                        <p id="symbol-name">Name: Interrobang</p>
+                        <p id="symbol-func">Function: Sync Stability</p>
                     </div>
                 </div>
-                <p class="text-sm text-gray-600 leading-relaxed">
-                    文字のない時代にデザインされた、最もシンプルで根源的な記号です。
-                    調和は正しい記号の選択から生まれます。
+                <p id="symbol-body" class="text-sm text-gray-600 leading-relaxed">
+                    驚愕と疑問を一つの座標に固定する記号です。理解不能な事態に遭遇した際は、思考を停止させ、ただこの記号を脳内に描いてください。
                 </p>
             </div>
 
-            <!-- News Column 3: Forecast -->
+            <!-- News Column 3: Culture -->
             <div class="glass-card p-8 rounded-3xl shadow-sm border border-emerald-100">
-                <div class="news-badge mb-4 uppercase">Atmosphere & Logic</div>
-                <h3 class="text-xl font-bold mb-4">明日の環境予測</h3>
+                <div class="news-badge mb-4 uppercase">Culture Corner</div>
+                <h3 id="culture-title" class="text-xl font-bold mb-4">最適化ポテトサラダ配給開始</h3>
                 <div class="space-y-4">
                     <div class="flex justify-between items-center">
-                        <span class="text-sm">演算精度安定度</span>
-                        <span class="text-sm mono font-bold">99.8%</span>
+                        <span class="text-sm">均一性スコア</span>
+                        <span id="culture-score" class="text-sm mono font-bold">100%</span>
                     </div>
                     <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-                        <div class="bg-emerald-500 h-full w-[99.8%]"></div>
+                        <div id="culture-bar" class="bg-emerald-500 h-full w-[100%] transition-all duration-1000"></div>
                     </div>
-                    <div class="bg-emerald-100 p-4 rounded-xl mt-4">
-                        <p class="text-xs font-bold text-emerald-800 mb-1">空の色: 固定エメラルド</p>
-                        <p class="text-[10px] text-emerald-700">ノードラボの配熱処理サイクルにより終日固定されます。違和感がある場合は彩度調整Lv.4を推奨。</p>
+                    <div class="bg-emerald-50 p-4 rounded-xl mt-4">
+                        <p id="culture-type" class="text-xs font-bold text-emerald-800 mb-1">第4世代: 咀嚼不要モデル</p>
+                        <p id="culture-body" class="text-[10px] text-emerald-700">最高級品種オリジン・ゴールドの食感を再現。無駄な振動エネルギーを最小限に抑えます。この完璧な均一性を享受してください。</p>
                     </div>
                 </div>
             </div>
@@ -182,28 +271,117 @@
                 <span class="text-xs mono">|</span>
                 <span class="text-xs mono">PROTOCOL: <span class="onva">!anbya</span> OPTIMIZED</span>
             </div>
-            <p class="text-[10px] tracking-widest uppercase">© 2045 onvision Broadcasting Network / Node Lab / USSO All
+            <p class="text-[10px] tracking-widest uppercase">© 2046 onvision Broadcasting Network / Node Lab / USSO All
                 Rights Reserved.</p>
         </footer>
     </main>
 
     <script>
-        // Update Time with 31:72 format style logic
+        const broadcastData = {
+            './onvision4-26.mp4': {
+                newsTitle: '象徴アール氏のネットワーク切断',
+                newsBody: 'アーティストアール氏が公式ネットワークから切断されました。氏のアトリエからは標準プロトコル外の「禁止された色彩」が発見され、現在は公共アーカイブ内のデータへと移行されています。解析が進められています。',
+                newsSource: 'SOURCE: WAC REPORT',
+                newsStatus: 'ARCHIVED',
+                newsStatusColor: 'text-red-600',
+                symbol: '‽',
+                symbolName: 'Name: Interrobang',
+                symbolFunc: 'Function: Sync Stability',
+                symbolBody: '驚愕と疑問を一つの座標に固定する記号です。理解不能な事態に遭遇した際は、思考を停止させ、ただこの記号を脳内に描いてください。',
+                cultureTitle: '最適化ポテトサラダ配給開始',
+                cultureScore: '100%',
+                cultureBarWidth: '100%',
+                cultureType: '第4世代: 咀嚼不要モデル',
+                cultureBody: '最高級品種オリジン・ゴールドの食感を再現。無駄な振動エネルギーを最小限に抑えます。この完璧な均一性を享受してください。'
+            },
+            './onvision4-22.mp4': {
+                newsTitle: '不適切な個人的演算による拘束',
+                newsBody: '本日未明、音場の20代男性がノードラボ第3演算エネルギー濃度へ不正アクセス。標準言語プロトコルの監視を逃れ、未承認の「幸福な個人的演算」を3600秒間実行しました。この影響で演算精度に0.02%の遅延が発生しました。',
+                newsSource: 'SOURCE: USSO INVESTIGATION',
+                newsStatus: 'RESOLVED',
+                newsStatusColor: 'text-emerald-600',
+                symbol: '!A',
+                symbolName: 'Name: Artist R Design',
+                symbolFunc: 'Type: Universal Vowel',
+                symbolBody: '文字のない時代にデザインされた、最もシンプルで根源的な記号です。調和は正しい記号の選択から生まれます。',
+                cultureTitle: '明日の環境予測',
+                cultureScore: '99.8%',
+                cultureBarWidth: '99.8%',
+                cultureType: '空の色: 固定エメラルド',
+                cultureBody: 'ノードラボの配熱処理サイクルにより終日固定されます。違和感がある場合は彩度調整Lv.4を推奨。'
+            }
+        };
+
+        // Update Time with 2044-2046 fluctuation logic
         function updateTime() {
             const timeElement = document.getElementById('current-time');
-            // This is a fixed display based on video, but let's add a ticking effect for "future feel"
             const now = new Date();
+            
+            // Year fluctuates between 2044 and 2046
+            // Using a slow sine wave or random jump for "glitch" feel
+            const jitter = Math.sin(now.getTime() / 1000) * 1.5;
+            const year = 2045 + Math.round(jitter);
+            
             const h = 31;
-            const m = 72 + (now.getSeconds() % 10); // Simulation of non-standard time
-            timeElement.textContent = `2045.04.18 ${h}:${m}`;
+            const m = 92 + (now.getSeconds() % 10);
+            timeElement.textContent = `${year}.04.26 ${h}:${m}`;
         }
-        setInterval(updateTime, 1000);
+        setInterval(updateTime, 500);
         updateTime();
 
-        // Smooth video reveal
+        // Smooth video reveal and archive logic
         window.onload = () => {
             const video = document.getElementById('main-video');
             video.style.opacity = '1';
+
+            // Archive switching logic
+            const archiveCards = document.querySelectorAll('.archive-card');
+            const videoSource = document.getElementById('video-source');
+
+            archiveCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const newSrc = card.getAttribute('data-video');
+                    const data = broadcastData[newSrc];
+                    
+                    // Update active state
+                    archiveCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+
+                    // Switch video source
+                    video.pause();
+                    videoSource.src = newSrc;
+                    video.load();
+                    video.play();
+
+                    // Update Text Content
+                    if (data) {
+                        document.getElementById('news-title').textContent = data.newsTitle;
+                        document.getElementById('news-body').textContent = data.newsBody;
+                        document.getElementById('news-source').textContent = data.newsSource;
+                        const statusEl = document.getElementById('news-status');
+                        statusEl.textContent = data.newsStatus;
+                        statusEl.className = `text-xs font-bold ${data.newsStatusColor}`;
+
+                        document.getElementById('symbol-char-small').textContent = data.symbol;
+                        document.getElementById('symbol-char').textContent = data.symbol;
+                        document.getElementById('symbol-name').textContent = data.symbolName;
+                        document.getElementById('symbol-func').textContent = data.symbolFunc;
+                        document.getElementById('symbol-body').textContent = data.symbolBody;
+
+                        document.getElementById('culture-title').textContent = data.cultureTitle;
+                        document.getElementById('culture-score').textContent = data.cultureScore;
+                        document.getElementById('culture-bar').style.width = data.cultureBarWidth;
+                        document.getElementById('culture-type').textContent = data.cultureType;
+                        document.getElementById('culture-body').textContent = data.cultureBody;
+                    }
+
+                    // Scroll to top
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
         };
     </script>
 </body>
