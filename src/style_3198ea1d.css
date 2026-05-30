@@ -1,0 +1,108 @@
+:root {
+            --onva-emerald: #50C878;
+            --onva-bg: #f8fafc;
+        }
+@font-face {
+  font-family: '2045alphabet';
+  src: url('https://ec2045.github.io/2045font/2045alphabet.otf') format('opentype');
+  font-display: swap;
+}
+
+body {
+  font-family: '2045alphabet', 'Noto Sans JP', sans-serif;
+}
+        body {
+            font-family:'2045alphabet' ,'Noto Sans JP', sans-serif;
+            background-color: var(--onva-bg);
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .emerald-gradient {
+            background: linear-gradient(135deg, #50C878 0%, #3a965a 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .video-container {
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(80, 200, 120, 0.25);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .news-badge {
+            background: var(--onva-emerald);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--onva-emerald);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            box-shadow: 0 0 8px var(--onva-emerald);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .archive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .archive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px rgba(80, 200, 120, 0.3);
+        }
+
+        .archive-card.active {
+            border-color: var(--onva-emerald);
+            background: rgba(80, 200, 120, 0.05);
+        }
+
+        /* Sky Glitch Effect */
+        .sky-glitch {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+            background: linear-gradient(180deg, #50C878 0%, #f8fafc 100%);
+            animation: sky-shift 10s infinite alternate linear;
+        }
+
+        @keyframes sky-shift {
+            0% { filter: hue-rotate(0deg); opacity: 0.05; }
+            50% { filter: hue-rotate(15deg); opacity: 0.08; }
+            100% { filter: hue-rotate(-10deg); opacity: 0.05; }
+        }
